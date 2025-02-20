@@ -27,5 +27,22 @@ public partial class DateTimePage : ContentPage
 		{
 			Time = new TimeSpan(12, 0, 0),
 		};
+        tp.PropertyChanged += Aega_valik;
+        abs = new AbsoluteLayout { Children {lbl, dp, tp} };
+		AbsoluteLayout.SetLayoutBounds(lbl, new Rect(10, 10, 200, 50));
+		AbsoluteLayout.SetLayoutBounds(dp, new Rect(0.2, 0.2, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize)); AbsoluteLayout.SetLayout Flags(dp, AbsoluteLayoutFlags.PositionProportional);
+		AbsoluteLayout.SetLayoutBounds(tp, new Rect(0.2, 0.5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize)); AbsoluteLayout.SetLayout Flags(tp, AbsoluteLayoutFlags.PositionProportional);
+		Content abs;
+	}
+
+	private void Aega_valik(object? sender, System.ComponentModel.PropertChangedEventArgs e)
+	{
+		lbl.Text="Oli valitud aeg: " + e.NewValue.ToString();
+	}
+
+	private void Kuupaeva_valik(object? sender, DateChangedEventArgs e)
+	{
+		lbl.Text = "Oli valitud kuupäev: " + e.NewDate.ToString("F");
 	}
 }
+
